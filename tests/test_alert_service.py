@@ -3,16 +3,16 @@ from dashboard.alert_service import evaluate_alerts
 
 
 def get_metrics(
-    total_requests=100,
+    total_requests=10,
     failed_requests=0,
     p95_latency=2.0,
-    total_tokens=5000
+    total_output_tokens=5000
 ):
     return {
         "total_requests": total_requests,
         "failed_requests": failed_requests,
         "p95_latency": p95_latency,
-        "total_tokens": total_tokens
+        "total_output_tokens": total_output_tokens
     }
 
 
@@ -25,9 +25,8 @@ def get_costs(total_cost=0.2):
 THRESHOLDS = {
     "max_p95_latency": 5.0,
     "max_failure_rate": 10.0,
-    "max_total_tokens": 100000,
-    "max_total_cost": 1.0,
-    "max_output_tokens" : 1000
+    "max_output_tokens": 10000,
+    "max_total_cost": 1.0
 }
 
 
