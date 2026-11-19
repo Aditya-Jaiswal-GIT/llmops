@@ -1,0 +1,129 @@
+{
+    "run_timestamp": "2026-11-17T16:37:22.157675+00:00",
+    "model": "openai/gpt-oss-120b",
+    "summary": {
+        "total_cases": 5,
+        "evaluated_cases": 5,
+        "failed_cases": 0,
+        "average_quality_score": 5.0,
+        "average_keyword_coverage": 0.73,
+        "total_input_tokens": 989,
+        "total_output_tokens": 3696,
+        "total_tokens": 4685,
+        "average_input_tokens": 197.8,
+        "average_output_tokens": 739.2,
+        "average_latency_seconds": 2.048
+    },
+    "results": [
+        {
+            "id": "eval_001",
+            "question": "What is LLMOps?",
+            "model": "openai/gpt-oss-120b",
+            "candidate_answer": "**LLMOps (Large‑Language‑Model Operations)** is the set of practices, tools, and workflows used to develop, deploy, monitor, and maintain applications that rely on large language models (LLMs) such as GPT‑4, LLaMA, or Claude.\n\n---\n\n### Core Elements of LLMOps\n\n| Area | What it covers | Why it matters |\n|------|----------------|----------------|\n| **Model Lifecycle Management** | • Versioning of model weights, prompts, and fine‑tuned checkpoints  <br>• Automated training / fine‑tuning pipelines | Guarantees reproducibility and lets you roll back to a known‑good model. |\n| **Data & Prompt Engineering** | • Curating training/finetuning data <br>• Storing, versioning, and testing prompts | Good data and prompts are the biggest performance drivers for LLMs. |\n| **Infrastructure & Deployment** | • Scalable compute (GPU/TPU clusters, serverless inference) <br>• Containerization (Docker, Kubernetes) <br>• Model serving frameworks (vLLM, TGI, Triton) | Enables low‑latency, cost‑effective inference for production traffic. |\n| **Observability & Monitoring** | • Latency, throughput, error rates <br>• Quality metrics (e.g., hallucination detection, toxicity scores) <br>• Usage analytics & cost tracking | Detects performance regressions, security issues, and budget overruns early. |\n| **Safety & Governance** | • Content filtering, bias mitigation, privacy checks <br>• Access control, audit logs, compliance (e.g., GDPR) | Reduces legal risk and protects users from harmful outputs. |\n| **Continuous Integration / Continuous Deployment (CI/CD)** | • Automated testing of prompts, model outputs, and API contracts <br>• Canary releases, blue‑green deployments | Allows rapid, safe iteration without breaking existing services. |\n| **Scaling & Cost Optimization** | • Model quantization, distillation, or retrieval‑augmented generation <br>• Autoscaling policies, spot‑instance usage | Keeps operational expenses manageable as demand grows. |\n\n---\n\n### Typical LLMOps Workflow\n\n1. **Define requirements** – target task, latency, cost, safety constraints.  \n2. **Collect & preprocess data** – curate examples, clean text, label for fine‑tuning.  \n3. **Fine‑tune / adapt model** – run training jobs, log hyper‑parameters, version the checkpoint.  \n4. **Validate** – run automated tests (unit tests for prompts, evaluation metrics, safety checks).  \n5. **Package & deploy** – containerize the model server, push to a registry, deploy via Kubernetes or a managed inference service.  \n6. **Monitor in production** – track performance, quality, cost, and safety signals; trigger alerts on anomalies.  \n7. **Iterate** – feed real‑world data back into step 2 for continuous improvement.\n\n---\n\n### Example Tools Used in LLMOps\n\n- **Model training & versioning:** Hugging Face Transformers, PyTorch Lightning, MLflow, DVC.  \n- **Serving:** vLLM, TensorFlow Serving, NVIDIA Triton Inference Server, LangChain Server.  \n- **Orchestration:** Kubernetes, Docker, Airflow, Prefect.  \n- **Observability:** Prometheus + Grafana, OpenTelemetry, Langfuse (prompt tracing).  \n- **Safety:** OpenAI’s Moderation API, Detoxify, custom rule‑based filters.  \n\n---\n\n### Why LLMOps Matters\n\n- **Reliability:** Production LLMs must stay up‑time and meet latency SLAs.  \n- **Safety:** Large models can generate harmful or biased content; systematic checks are essential.  \n- **Cost control:** Inference on big GPUs is expensive; efficient pipelines prevent budget blow‑outs.  \n- **Speed of innovation:** Structured CI/CD lets teams ship new prompts or model updates daily without breaking existing services.\n\nIn short, LLMOps applies the proven DevOps mindset to the unique challenges of large language models, ensuring they are **usable, safe, scalable, and maintainable** in real‑world applications.",
+            "reference_answer": "LLMOps is the practice of managing the development, deployment, monitoring, and maintenance of large language model applications throughout their lifecycle.",
+            "scores": {
+                "correctness": 5,
+                "relevance": 5,
+                "completeness": 5,
+                "average": 5.0
+            },
+            "keyword_coverage": 1.0,
+            "judge_reason": "The answer correctly defines LLMOps as the set of practices for developing, deploying, monitoring, and maintaining LLM applications, matching the reference. It directly addresses the question and expands with accurate, relevant details about lifecycle management, tools, and why it matters, fully covering the concept.",
+            "generation_metrics": {
+                "input_tokens": 196,
+                "output_tokens": 925,
+                "total_tokens": 1121,
+                "latency_seconds": 2.731
+            },
+            "status": "passed"
+        },
+        {
+            "id": "eval_002",
+            "question": "What is Retrieval Augmented Generation?",
+            "model": "openai/gpt-oss-120b",
+            "candidate_answer": "**Retrieval‑Augmented Generation (RAG)** is a technique that combines two steps—**retrieving** relevant information from an external source and then **generating** a response with a language model.  \n\n---\n\n### How it works\n1. **Query → Retriever**  \n   * The user’s prompt is sent to a *retriever* (e.g., BM25, dense vector search, or a neural encoder).  \n   * The retriever searches a large knowledge base (documents, webpages, database rows, code snippets, etc.) and returns the top‑k most relevant passages.\n\n2. **Passages + Prompt → Generator**  \n   * The retrieved passages are concatenated with the original prompt (often with special tokens to mark them).  \n   * A generative language model (e.g., GPT‑4, LLaMA, T5) reads this combined input and produces the final answer, using the retrieved facts as grounding.\n\n3. **Optional post‑processing**  \n   * The system may filter or rank the generated answers, cite sources, or verify consistency.\n\n---\n\n### Why use RAG?\n- **Up‑to‑date knowledge** – the model can answer questions about recent events or niche topics without being retrained.\n- **Fact‑grounded output** – citations come from the retrieved documents, reducing hallucinations.\n- **Scalability** – the knowledge base can be expanded independently of the language model.\n- **Efficiency** – a relatively small model can achieve strong performance because it leans on external data instead of memorizing everything.\n\n---\n\n### Typical components\n| Component | Role | Common implementations |\n|-----------|------|--------------------------|\n| **Retriever** | Finds relevant text chunks quickly | BM25, FAISS + dense embeddings, ColBERT, DPR, MIPS indexes |\n| **Knowledge source** | Stores the information to be retrieved | Wikipedia dumps, enterprise documents, product catalogs, code repositories |\n| **Generator** | Produces natural‑language answers | GPT‑3/4, LLaMA, T5, FLAN‑UL2, Claude |\n| **Fusion method** | How retrieved text is fed to the generator | Simple concatenation, prefix‑tuning, cross‑attention adapters, “retrieval‑augmented” fine‑tuning |\n\n---\n\n### Example use cases\n- **Open‑domain QA** – “What were the main outcomes of the 2023 UN Climate Conference?” → retrieve recent news articles, then generate a concise summary.\n- **Customer support** – Pull relevant policy documents or troubleshooting guides, then answer a user’s issue in conversational style.\n- **Code assistance** – Retrieve similar code snippets from a repository, then generate a tailored solution or explanation.\n- **Scientific literature search** – Fetch abstracts or methods sections, then synthesize a response to a research question.\n\n---\n\n### Benefits vs. pure generation\n| Pure Generation | Retrieval‑Augmented Generation |\n|-----------------|--------------------------------|\n| Relies solely on what the model memorized during pre‑training | Can incorporate fresh, domain‑specific facts |\n| Higher risk of hallucinating unsupported details | Answers are anchored to retrieved sources (can be cited) |\n| Model size must increase to store more knowledge | Smaller models can achieve comparable performance by “looking up” information |\n\n---\n\n### Current challenges\n- **Retriever quality** – If the top‑k passages miss the needed fact, the generator may still hallucinate.\n- **Latency** – Searching a large index adds time; efficient indexing and caching are needed for real‑time use.\n- **Source attribution** – Properly citing which passage supports each part of the answer can be non‑trivial.\n- **Handling contradictory sources** – The generator must decide which information to trust or how to present uncertainty.\n\n---\n\n### Quick summary\n- **RAG = Retrieve + Generate.**  \n- It lets a language model answer questions with up‑to‑date, verifiable information by first pulling relevant documents and then using them as context for generation.  \n- The approach improves factual accuracy, reduces the need for massive model sizes, and is widely used in search‑augmented chatbots, enterprise Q&A systems, and research assistants.",
+            "reference_answer": "RAG retrieves relevant information from an external knowledge source and provides it to a language model as context so the model can generate a more informed answer.",
+            "scores": {
+                "correctness": 5,
+                "relevance": 5,
+                "completeness": 5,
+                "average": 5.0
+            },
+            "keyword_coverage": 1.0,
+            "judge_reason": "The answer accurately describes RAG as retrieving external information and feeding it to a language model for generation, directly answering the question and providing a thorough, correct explanation with additional useful details.",
+            "generation_metrics": {
+                "input_tokens": 197,
+                "output_tokens": 953,
+                "total_tokens": 1150,
+                "latency_seconds": 2.303
+            },
+            "status": "passed"
+        },
+        {
+            "id": "eval_003",
+            "question": "What is prompt engineering?",
+            "model": "openai/gpt-oss-120b",
+            "candidate_answer": "**Prompt engineering** is the practice of designing and refining the text you give to a language model (like ChatGPT) so that it produces the most useful, accurate, and relevant response.\n\n### Why it matters\n- **Controls output quality** – a well‑crafted prompt reduces vague or off‑topic answers.  \n- **Steers behavior** – you can tell the model to adopt a tone, format, or role (e.g., “explain like a teacher”).  \n- **Improves efficiency** – fewer follow‑up edits are needed, saving time.\n\n### Core ideas\n\n| Concept | What it is | Simple tip |\n|---------|------------|------------|\n| **Clear instruction** | State exactly what you want. | Use verbs like “list,” “compare,” “summarize.” |\n| **Context provision** | Give background information the model needs. | Include relevant facts or constraints in the prompt. |\n| **Role‑playing** | Ask the model to act as a specific persona. | “You are a senior data‑science mentor…” |\n| **Output format** | Specify the structure of the answer. | “Answer in a 3‑bullet list, each under 20 words.” |\n| **Few‑shot examples** | Provide one or more example Q&A pairs. | Shows the pattern you expect. |\n| **Constraints** | Limit length, style, or content. | “No more than 150 characters.” |\n\n### Typical prompt patterns\n\n1. **Instruction‑only**  \n   ```\n   Summarize the plot of *Pride and Prejudice* in three sentences.\n   ```\n\n2. **Instruction + context**  \n   ```\n   You are a travel guide for families with toddlers. Recommend a 2‑day itinerary in Barcelona, including kid‑friendly activities.\n   ```\n\n3. **Few‑shot (example‑driven)**  \n   ```\n   Q: What is photosynthesis?  \n   A: Photosynthesis is the process plants use to convert sunlight into chemical energy.  \n\n   Q: What is the capital of Japan?  \n   A: Tokyo.  \n\n   Q: What is prompt engineering?  \n   A:\n   ```\n\n4. **Chain‑of‑thought** (encourages reasoning)  \n   ```\n   Solve: 27 ÷ 3 + 5 × 2. Show each step.\n   ```\n\n### Best‑practice checklist\n\n- ✅ **Be specific** – avoid ambiguous words.  \n- ✅ **State the desired format** – list, table, code block, etc.  \n- ✅ **Provide necessary background** – data, definitions, constraints.  \n- ✅ **Limit scope** – one task per prompt to reduce confusion.  \n- ✅ **Iterate** – tweak wording based on the model’s output until it meets your needs.\n\n### Quick example\n\n**Prompt:**  \n```\nYou are a friendly nutritionist. List three high‑protein vegetarian foods, give their approximate protein per 100 g, and suggest a simple recipe using each. Format as a markdown table.\n```\n\n**Result (expected):** a markdown table with foods, protein amounts, and brief recipes.\n\nIn short, prompt engineering is the art of communicating with AI models in a way that reliably yields the answer you want. By shaping the prompt’s clarity, context, role, and format, you guide the model’s reasoning and output.",
+            "reference_answer": "Prompt engineering is the process of designing and refining instructions and input messages to guide a language model toward useful and accurate outputs.",
+            "scores": {
+                "correctness": 5,
+                "relevance": 5,
+                "completeness": 5,
+                "average": 5.0
+            },
+            "keyword_coverage": 0.33,
+            "judge_reason": "The answer accurately defines prompt engineering, directly answers the question, and adds useful elaboration, examples, and best‑practice tips, fully covering the concept.",
+            "generation_metrics": {
+                "input_tokens": 195,
+                "output_tokens": 752,
+                "total_tokens": 947,
+                "latency_seconds": 2.017
+            },
+            "status": "passed"
+        },
+        {
+            "id": "eval_004",
+            "question": "What is the purpose of token monitoring in LLM applications?",
+            "model": "openai/gpt-oss-120b",
+            "candidate_answer": "**Token monitoring** is the practice of tracking how many tokens an LLM (large‑language model) receives as input and produces as output during each request.  \n\nIts main purposes are:\n\n- **Cost control**  \n  - Most LLM APIs charge per 1 000 tokens. By counting tokens you can predict and limit expenses, set budgets, or warn users when a request will be expensive.\n\n- **Latency & performance management**  \n  - Token count correlates with processing time. Monitoring lets you enforce limits (e.g., “max 500 tokens”) so responses stay fast and the service remains responsive.\n\n- **Model limits & safety**  \n  - LLMs have a maximum context window (e.g., 8 k, 32 k tokens). Monitoring prevents requests that would exceed this limit, which would otherwise cause errors or truncated answers.\n\n- **Quality & relevance**  \n  - Very long prompts can dilute the model’s focus. By tracking token usage you can encourage concise prompts, leading to clearer, more on‑topic outputs.\n\n- **Debugging & analytics**  \n  - Token logs help developers understand why a request failed, why a response was cut off, or how usage patterns evolve over time.\n\n- **Compliance & auditing**  \n  - In regulated environments you may need to record how much data is processed per request. Token counts provide a lightweight audit trail.\n\n**Example**  \nA chatbot limits each user message to 200 tokens and caps the model’s reply at 300 tokens. The system logs “User: 180 tokens, Bot: 250 tokens, Cost: $0.0012”. If a user tries to send a 500‑token paragraph, the monitor rejects it and returns a friendly error: “Please shorten your message to 200 tokens.”  \n\nIn short, token monitoring helps keep LLM‑driven applications **affordable, fast, reliable, and within technical or regulatory boundaries**.",
+            "reference_answer": "Token monitoring measures input and output token consumption. It helps track usage, estimate costs, identify unusual consumption, and manage application limits.",
+            "scores": {
+                "correctness": 5,
+                "relevance": 5,
+                "completeness": 5,
+                "average": 5.0
+            },
+            "keyword_coverage": 1.0,
+            "judge_reason": "The answer accurately describes token monitoring, matches the reference points (usage tracking, cost estimation, detecting anomalies, managing limits) and expands with relevant additional purposes, fully addressing the question.",
+            "generation_metrics": {
+                "input_tokens": 202,
+                "output_tokens": 461,
+                "total_tokens": 663,
+                "latency_seconds": 1.457
+            },
+            "status": "passed"
+        },
+        {
+            "id": "eval_005",
+            "question": "What is hallucination in a language model?",
+            "model": "openai/gpt-oss-120b",
+            "candidate_answer": "**Hallucination** in a language model (LLM) is when the model generates text that is **plausible‑looking but factually incorrect, unsupported, or completely made‑up**. The output “hallucinates” information that isn’t present in the input or in any reliable source.\n\n### Why it happens\n- **Statistical prediction**: LLMs choose the next word that maximizes probability, not the one that guarantees truth.\n- **Training data noise**: The model learns from a mix of accurate and inaccurate text; it can copy the latter.\n- **Lack of grounding**: The model isn’t directly connected to a factual database or real‑time knowledge source.\n- **Prompt ambiguity**: Vague or open‑ended prompts give the model freedom to invent details.\n- **Over‑confidence**: The model can produce confident‑sounding language even when uncertain.\n\n### Typical forms of hallucination\n- **Factual errors**: Wrong dates, names, statistics, or scientific facts.  \n  *Example*: “The Eiffel Tower is 1,200 m tall” (actual height ≈ 300 m).\n- **Non‑existent citations**: Fabricating paper titles, authors, or URLs.  \n  *Example*: “See Smith et al., 2023, *Journal of Quantum Widgets*” when no such paper exists.\n- **Invented reasoning steps**: Providing a logical chain that never occurred in the source material.\n- **Mis‑attributed quotes**: Claiming a person said something they never did.\n\n### How to detect hallucinations\n- **Cross‑check** with reliable sources (Wikipedia, official documents, peer‑reviewed papers).  \n- **Look for over‑specific details** that are hard to verify (exact numbers, obscure references).  \n- **Check consistency**: Does the claim align with known facts or other parts of the response?\n\n### Mitigation strategies\n- **Retrieval‑augmented generation**: Combine the LLM with a search engine or database that supplies up‑to‑date facts.  \n- **Prompt engineering**: Ask the model to “cite sources” or “only answer if you are sure”.  \n- **Post‑processing filters**: Use fact‑checking models or rule‑based checks on the output.  \n- **Fine‑tuning on high‑quality, verified data** to reduce exposure to noisy information.  \n- **Human review** for critical applications (medical advice, legal information, scientific reporting).\n\nIn short, hallucination is the model’s tendency to **make up information** that sounds correct but isn’t, and managing it requires a mix of better data, architectural safeguards, and verification steps.",
+            "reference_answer": "A hallucination occurs when a language model generates information that is false, unsupported, or fabricated but presents it as if it were true.",
+            "scores": {
+                "correctness": 5,
+                "relevance": 5,
+                "completeness": 5,
+                "average": 5.0
+            },
+            "keyword_coverage": 0.33,
+            "judge_reason": "The answer correctly defines hallucination as false or fabricated output presented as true, directly addresses the question, and expands with relevant details on causes, types, detection, and mitigation, fully covering the concept.",
+            "generation_metrics": {
+                "input_tokens": 199,
+                "output_tokens": 605,
+                "total_tokens": 804,
+                "latency_seconds": 1.732
+            },
+            "status": "passed"
+        }
+    ]
+}

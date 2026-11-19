@@ -1,0 +1,9 @@
+
+{
+    "openai/gpt-oss-120b": {
+        "input_price_per_million": 0.15
+,
+        "output_price_per_million": 0.60,
+        "currency": "USD"
+    }
+}

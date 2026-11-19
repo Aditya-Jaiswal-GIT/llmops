@@ -1,0 +1,19 @@
+
+from contextvars import ContextVar
+
+request_id_context = ContextVar(
+    "request_id",
+    default="unknown"
+)
+
+
+def set_request_id(request_id):
+    return request_id_context.set(request_id)
+
+
+def reset_request_id(token):
+    request_id_context.reset(token)
+
+
+def get_request_id():
+    return request_id_context.get()

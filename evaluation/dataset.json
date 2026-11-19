@@ -1,0 +1,33 @@
+
+[
+  {
+    "id": "eval_001",
+    "question": "What is LLMOps?",
+    "reference_answer": "LLMOps is the practice of managing the development, deployment, monitoring, and maintenance of large language model applications throughout their lifecycle.",
+    "required_keywords": ["deployment", "monitoring", "lifecycle"]
+  },
+  {
+    "id": "eval_002",
+    "question": "What is Retrieval Augmented Generation?",
+    "reference_answer": "RAG retrieves relevant information from an external knowledge source and provides it to a language model as context so the model can generate a more informed answer.",
+    "required_keywords": ["retrieval", "context", "language model"]
+  },
+  {
+    "id": "eval_003",
+    "question": "What is prompt engineering?",
+    "reference_answer": "Prompt engineering is the process of designing and refining instructions and input messages to guide a language model toward useful and accurate outputs.",
+    "required_keywords": ["instructions", "language model", "outputs"]
+  },
+  {
+    "id": "eval_004",
+    "question": "What is the purpose of token monitoring in LLM applications?",
+    "reference_answer": "Token monitoring measures input and output token consumption. It helps track usage, estimate costs, identify unusual consumption, and manage application limits.",
+    "required_keywords": ["input", "output", "usage", "cost"]
+  },
+  {
+    "id": "eval_005",
+    "question": "What is hallucination in a language model?",
+    "reference_answer": "A hallucination occurs when a language model generates information that is false, unsupported, or fabricated but presents it as if it were true.",
+    "required_keywords": ["false", "unsupported", "fabricated"]
+  }
+]

@@ -1,0 +1,43 @@
+{
+    "run_timestamp": "2026-11-17T08:33:27.705411+00:00",
+    "model": "openai/gpt-oss-120b",
+    "summary": {
+        "total_cases": 5,
+        "evaluated_cases": 0,
+        "failed_cases": 5,
+        "average_quality_score": 0,
+        "average_keyword_coverage": 0
+    },
+    "results": [
+        {
+            "id": "eval_001",
+            "question": "What is LLMOps?",
+            "status": "evaluation_error",
+            "error": "'Input to ChatPromptTemplate is missing variables {\\'\\\\n    \"correctness\"\\'}.  Expected: [\\'\\\\n    \"correctness\"\\', \\'candidate_answer\\', \\'question\\', \\'reference_answer\\'] Received: [\\'question\\', \\'reference_answer\\', \\'candidate_answer\\']\\nNote: if you intended {\\n    \"correctness\"} to be part of the string and not a variable, please escape it with double curly braces like: \\'{{\\n    \"correctness\"}}\\'.\\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/INVALID_PROMPT_INPUT '"
+        },
+        {
+            "id": "eval_002",
+            "question": "What is Retrieval Augmented Generation?",
+            "status": "evaluation_error",
+            "error": "'Input to ChatPromptTemplate is missing variables {\\'\\\\n    \"correctness\"\\'}.  Expected: [\\'\\\\n    \"correctness\"\\', \\'candidate_answer\\', \\'question\\', \\'reference_answer\\'] Received: [\\'question\\', \\'reference_answer\\', \\'candidate_answer\\']\\nNote: if you intended {\\n    \"correctness\"} to be part of the string and not a variable, please escape it with double curly braces like: \\'{{\\n    \"correctness\"}}\\'.\\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/INVALID_PROMPT_INPUT '"
+        },
+        {
+            "id": "eval_003",
+            "question": "What is prompt engineering?",
+            "status": "evaluation_error",
+            "error": "'Input to ChatPromptTemplate is missing variables {\\'\\\\n    \"correctness\"\\'}.  Expected: [\\'\\\\n    \"correctness\"\\', \\'candidate_answer\\', \\'question\\', \\'reference_answer\\'] Received: [\\'question\\', \\'reference_answer\\', \\'candidate_answer\\']\\nNote: if you intended {\\n    \"correctness\"} to be part of the string and not a variable, please escape it with double curly braces like: \\'{{\\n    \"correctness\"}}\\'.\\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/INVALID_PROMPT_INPUT '"
+        },
+        {
+            "id": "eval_004",
+            "question": "What is the purpose of token monitoring in LLM applications?",
+            "status": "evaluation_error",
+            "error": "'Input to ChatPromptTemplate is missing variables {\\'\\\\n    \"correctness\"\\'}.  Expected: [\\'\\\\n    \"correctness\"\\', \\'candidate_answer\\', \\'question\\', \\'reference_answer\\'] Received: [\\'question\\', \\'reference_answer\\', \\'candidate_answer\\']\\nNote: if you intended {\\n    \"correctness\"} to be part of the string and not a variable, please escape it with double curly braces like: \\'{{\\n    \"correctness\"}}\\'.\\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/INVALID_PROMPT_INPUT '"
+        },
+        {
+            "id": "eval_005",
+            "question": "What is hallucination in a language model?",
+            "status": "evaluation_error",
+            "error": "'Input to ChatPromptTemplate is missing variables {\\'\\\\n    \"correctness\"\\'}.  Expected: [\\'\\\\n    \"correctness\"\\', \\'candidate_answer\\', \\'question\\', \\'reference_answer\\'] Received: [\\'question\\', \\'reference_answer\\', \\'candidate_answer\\']\\nNote: if you intended {\\n    \"correctness\"} to be part of the string and not a variable, please escape it with double curly braces like: \\'{{\\n    \"correctness\"}}\\'.\\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/INVALID_PROMPT_INPUT '"
+        }
+    ]
+}
