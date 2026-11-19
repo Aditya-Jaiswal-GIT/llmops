@@ -65,15 +65,14 @@ def test_high_failure_rate_alert():
 
 
 def test_high_token_usage_alert():
-
     alerts = evaluate_alerts(
-        get_metrics(total_tokens=150000),
+        get_metrics(total_output_tokens=15000),
         get_costs(),
         THRESHOLDS
     )
 
     assert any(
-        alert["category"] == "Token Usage"
+        alert["category"] == "Output Tokens"
         for alert in alerts
     )
 
