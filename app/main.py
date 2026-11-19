@@ -87,11 +87,10 @@ async def observability_middleware(request: Request, call_next):
 app.include_router(router)
 
 
-@app.get("/health")
-def health():
-
+@app.get("/health", tags=["Health"])
+async def health_check():
     return {
         "status": "healthy",
-        "application": settings.APP_NAME,
-        "environment": settings.APP_ENV
+        "service": "llmops-api",
+        "version": "1.0.0"
     }
