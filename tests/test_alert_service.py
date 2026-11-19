@@ -26,7 +26,8 @@ THRESHOLDS = {
     "max_p95_latency": 5.0,
     "max_failure_rate": 10.0,
     "max_total_tokens": 100000,
-    "max_total_cost": 1.0
+    "max_total_cost": 1.0,
+    "max_output_tokens" : 1000
 }
 
 
