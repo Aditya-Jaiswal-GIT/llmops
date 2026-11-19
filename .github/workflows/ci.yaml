@@ -1,5 +1,5 @@
 
-name: Groq LLMOps CI Pipeline
+name: llmops
 
 on:
   push:
